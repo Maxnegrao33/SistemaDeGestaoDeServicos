@@ -1,0 +1,37 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package br.com.sistemadeloja.telas;
+
+import java.sql.*;
+import br.com.sistemadeloja.dal.ModuloConexao;
+
+/**
+ *
+ * @author Maciel Oliveira
+ * Alt + Shift + F para identar o código 
+ * Ctrl + Space para auto preenchimento
+ * 
+ */
+public class TelaLogin extends javax.swing.JFrame {
+    Connection conexao = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    /**
+     * Creates new form TelaLogin
+     */
+    public TelaLogin() {
+        initComponents();
+        conexao = ModuloConexao.conector();
+        /*A linha abaixo serve de apoio ao status da conexão
+        **System.out.println(conexao);
+        */
+        if (conexao != null){
+            lblStatus.setText("Conectado");
+        }else {
+            lblStatus.setText("Desconectado");
+        }
+            
+    }
