@@ -1,0 +1,9 @@
+/*Dicas para o banco de Dados
+        **Se for mudar o local do banco, trocar localhost pelo novo IP
+        **Mudar o nome do bnco, trocar somente o nome antigo pelo atual
+        **Mudar de usuário, trocar o user e password
+        */
+                
+        String url = "jdbc:mysql://localhost:3306/dbloja";
+        String user = "root";
+        String password = "*******************";
