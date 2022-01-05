@@ -1,0 +1,77 @@
+package br.com.sistemadeloja.telas;
+
+import java.sql.*;
+import br.com.sistemadeloja.dal.ModuloConexao;
+
+/**
+ *
+ * @author Maciel Oliveira
+ * Alt + Shift + F para identar o código 
+ * Ctrl + Space para auto preenchimento
+ * 
+ */
+public class TelaLogin extends javax.swing.JFrame {
+    Connection conexao = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    /**
+     * Creates new form TelaLogin
+     */
+    
+    //Criando o método Logar()
+    public void logar(){
+    
+    //Criar a variável que executa a instrução sql que pensquisa o user e password
+        String sql = "select * from tb_usuarios where login =? and senha =?";
+        //o ? será substituido polo usuario e senha da caixa da tela de login
+        
+            try {
+                /**As linhas abaixo preparam a consulta ao banco em função 
+                *do que for digitado na caixas de texto
+                */
+                pst = conexao.prepareStatement(sql);
+                pst.setString(1, txtUsuario.getText());
+                pst.setString(2, txtSenha.getText());
+                
+                //A linha abaixo executa a query
+                
+                rs = pst.executeQuery();
+                //Se existir usuario e senha correpondente
+                    
+                if (rs.next()) {
+                   //Instanciando e criando objeto da Tela Principal
+                    TelaPrincipal principal = new TelaPrincipal();
+                        principal.setVisible(true);
+                }else {
+                    JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválido(s)")
+                }
+                         
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null,e);
+            }
+        
+    }
+    
+    public TelaLogin() {
+        initComponents();
+        conexao = ModuloConexao.conector();
+        /*A linha abaixo serve de apoio ao status da conexão
+        **System.out.println(conexao);
+        */
+        if (conexao != null){
+            lblStatus.setText("Conectado");
+        }else {
+            lblStatus.setText("Desconectado");
+        }
+            
+    }
+    
+    //Clicar com o botão direito no Form da Tela de Login sobre o botão btnLogin --> Action --> ActionPerformed
+    //E irá criar o evento para inserir o método logar
+    
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    //Chamando o método logar
+        logar();
+    }    
+    
+    
