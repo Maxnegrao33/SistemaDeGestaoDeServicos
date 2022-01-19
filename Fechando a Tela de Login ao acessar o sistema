@@ -1,0 +1,18 @@
+//Boa prática ao aessar o sistema e chamar a Tela Principal
+//Fechar automaticamente a Tela de Login e encerrar a conexão com o banco de dados
+//Dentro do método Logar() procurar a linha
+
+if (rs.next()) {
+                   //Instanciando e criando objeto da Tela Principal
+                    TelaPrincipal principal = new TelaPrincipal();
+                        principal.setVisible(true);
+                        
+//E inserir estas linhas
+
+if (rs.next()) {
+                   //Instanciando e criando objeto da Tela Principal
+                    TelaPrincipal principal = new TelaPrincipal();
+                        principal.setVisible(true);
+                        //linhas inseridas
+                        this.dispose();
+                        conexao.close();
