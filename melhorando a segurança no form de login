@@ -1,0 +1,31 @@
+//Modificaremos algumas linhas de código no form...
+//O código deve estar assim:
+/*  try {
+                /**As linhas abaixo preparam a consulta ao banco em função 
+                *do que for digitado na caixas de texto
+                */
+                pst = conexao.prepareStatement(sql);
+                pst.setString(1, txtUsuario.getText());
+                pst.setString(2, txtSenha.getText());
+               
+                
+                //A linha abaixo executa a query
+                
+                rs = pst.executeQuery();
+                //Se existir usuario e senha correpondente
+
+Modificaremos criando um obrjeto de nome captura para armazenar a senha
+
+try {
+                /**As linhas abaixo preparam a consulta ao banco em função 
+                *do que for digitado na caixas de texto
+                */
+                pst = conexao.prepareStatement(sql);
+                pst.setString(1, txtUsuario.getText());
+                String captura = new String(txtSenha.getPassword());
+                pst.setString(2, captura);
+                
+                //A linha abaixo executa a query
+                
+                rs = pst.executeQuery();
+                //Se existir usuario e senha correpondente
