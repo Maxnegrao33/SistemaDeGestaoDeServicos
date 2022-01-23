@@ -1,0 +1,7 @@
+import java.util.date;
+
+private void formWindowActivated(java.awt.event.WindowEvent evt) {                                     
+        //As linhas abaixo substituem a label lblData pela data atual do Sistema ao inicializar o form
+        Date data = new Date();
+        lblData.setText(data.toString());
+    }                              
